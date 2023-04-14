@@ -2,9 +2,12 @@
 
 namespace App\Providers;
 
+use App\View\Composers\ProfileComposer;
+use Illuminate\Support\Facades;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\View;
+use Illuminate\View\View;
 use App\Models\User;
+use App\Models\Navigation;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,7 +24,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $total_user = User::count();
-        View::share('notifications', $total_user);
+        Facades\View::composer('admin.pages.*', function (View $view) {
+            $total_user = User::count();
+
+            $navigations = Navigation::with('children')->where('is_root', 1)->get();
+            $view->with('navigations', $navigations);
+        });
     }
 }

@@ -45,7 +45,6 @@ class AuthAPIController extends Controller
         $user = Auth::User();
 
         $token = $user->createToken("tinyCore");
-        dd($token);
 
         $returnData = [
             "user"  => $user,

@@ -131,7 +131,15 @@
                 <a class="dropdown-item" href="#"><i class="ti-settings text-muted mr-2"></i> Settings</a>
                 <a class="dropdown-item" href="#"><i class="ti-lock text-muted mr-2"></i> Lock screen</a>
                 <div class="dropdown-divider mb-0"></div>
-                <a class="dropdown-item" href="#"><i class="ti-power-off text-muted mr-2"></i> Logout</a>
+
+                <form action="theUrl" method="POST">
+
+                    <input type="hidden" name="param1" value="val" />
+                    <input type="hidden" name="param2" value="val2" />
+                    
+                    <a class="dropdown-item" onclick="this.parentNode.submit()" href="#"><i class="ti-power-off text-muted mr-2"></i> Logout</a>
+                    
+                </form>
             </div>
         </li>
     </ul><!--end topbar-nav-->

@@ -2,14 +2,15 @@
 <!-- Left Sidenav -->
 <div class="left-sidenav">
     <ul class="metismenu left-sidenav-menu">
-        <li>
-            <a href="javascript: void(0);"><i class="ti-bar-chart"></i><span>Dashboard</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+        <li class="nav-item">
+            <a class="nav-link" href="../dashboard/analytics-index.html"><i class="ti-control-record"></i>Analytics</a>
+            {{-- <a href="javascript: void(0);"><i class="ti-bar-chart"></i><span>Dashboard</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
             <ul class="nav-second-level" aria-expanded="false">
                 <li class="nav-item"><a class="nav-link" href="../dashboard/analytics-index.html"><i class="ti-control-record"></i>Analytics</a></li>
                 <li class="nav-item"><a class="nav-link" href="../dashboard/crm-index.html"><i class="ti-control-record"></i>CRM</a></li>
                 <li class="nav-item"><a class="nav-link" href="../dashboard/helpdesk-index.html"><i class="ti-control-record"></i>Helpdesk</a></li>
                 <li class="nav-item"><a class="nav-link" href="../dashboard/sales-index.html"><i class="ti-control-record"></i>Sales</a></li> 
-            </ul>
+            </ul> --}}
         </li>
 
         <li>

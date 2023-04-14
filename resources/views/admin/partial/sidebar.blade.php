@@ -2,15 +2,22 @@
 <!-- Left Sidenav -->
 <div class="left-sidenav">
     <ul class="metismenu left-sidenav-menu">
-        <li>
-            <a href="javascript: void(0);"><i class="ti-bar-chart"></i><span>Dashboard</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
-            <ul class="nav-second-level" aria-expanded="false">
-                <li class="nav-item"><a class="nav-link" href="../dashboard/analytics-index.html"><i class="ti-control-record"></i>Analytics</a></li>
-                <li class="nav-item"><a class="nav-link" href="../dashboard/crm-index.html"><i class="ti-control-record"></i>CRM</a></li>
-                <li class="nav-item"><a class="nav-link" href="../dashboard/helpdesk-index.html"><i class="ti-control-record"></i>Helpdesk</a></li>
-                <li class="nav-item"><a class="nav-link" href="../dashboard/sales-index.html"><i class="ti-control-record"></i>Sales</a></li> 
-            </ul>
-        </li>
+        @foreach ($navigations as $navigation)
+            @if($navigation->is_group == 0 )
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route($navigation->route_name) }}"><i class="ti-control-record"></i>{{$navigation->name}}</a>
+                </li>
+            @else
+                <li>
+                    <a href="javascript: void(0);"><i class="ti-bar-chart"></i><span>{{ $navigation->name }}</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        @foreach ($navigation->children as $children)
+                            <li class="nav-item"><a class="nav-link" href="{{ route($children->route_name) }}"><i class="ti-control-record"></i>{{ $children->name }} </a></li>
+                        @endforeach
+                    </ul>
+                </li>
+            @endif
+        @endforeach
 
         <li>
             <a href="javascript: void(0);"><i class="ti-server"></i><span>Apps</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
