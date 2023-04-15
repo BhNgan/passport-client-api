@@ -35,6 +35,7 @@
             <div class="page-content">
 
                 <div class="container-fluid">
+                    @include('admin.partial.alert')
                     @yield('content')
 
                 </div><!-- container -->

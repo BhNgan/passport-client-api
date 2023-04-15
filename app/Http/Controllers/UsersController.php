@@ -2,17 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+    private $view_root = "admin.pages.user.";
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $search = $request->input('search') == null ? "" : $request->input('search');
+        
+        $users = User::where('email', 'like', "%".$search ."%")->paginate(10);
+        return View($this->view_root.'index', [
+            'users' => $users
+        ]);
     }
 
     /**
@@ -20,7 +28,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return View($this->view_root.'create');
     }
 
     /**
@@ -28,7 +36,19 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:'.User::class,
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+        
+        return redirect()->route('users.index');
     }
 
     /**

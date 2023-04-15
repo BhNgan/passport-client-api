@@ -132,7 +132,7 @@
                 <a class="dropdown-item" href="#"><i class="ti-lock text-muted mr-2"></i> Lock screen</a>
                 <div class="dropdown-divider mb-0"></div>
 
-                <form action="theUrl" method="POST">
+                <form action="{{route('logout')}}" method="POST">
 
                     <input type="hidden" name="param1" value="val" />
                     <input type="hidden" name="param2" value="val2" />

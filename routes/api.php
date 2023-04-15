@@ -23,7 +23,7 @@ use App\Http\Controllers\CustomersApiController;
 Route::post('/register', [AuthAPIController::class, 'register']);
 Route::post('/login', [AuthAPIController::class, 'login']);
 
-Route::group(['middleware' => 'auth:api'], function () {
+Route::group(['middleware' => 'auth:api', 'as' => 'api'], function () {
     Route::apiResources([
         'customers' => CustomersApiController::class,
     ]);
