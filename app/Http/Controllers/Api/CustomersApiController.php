@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Models\Customer;
 
 use Illuminate\Http\Request;
 
 use Illuminate\Validation\ValidationException;
+
+use  App\Http\Controllers\Controller;
 
 class CustomersApiController extends Controller
 {
@@ -15,8 +17,8 @@ class CustomersApiController extends Controller
      */
     public function index()
     {
-        $customers = Customer::all();
-        
+        $customers = Customer::paginate();
+
         return response()->json($customers, 200);
     }
 
@@ -32,7 +34,7 @@ class CustomersApiController extends Controller
             'last_name' => 'required|string|max:50',
             'phone_number' => 'required|string|max:12',
         ]);
-        
+
         $customer = Customer::create($request->all());
 
         return response()->json($customer, 201);
@@ -45,9 +47,9 @@ class CustomersApiController extends Controller
     {
         try {
             $customer = Customer::findOrFail($id);
-    
+
             return response()->json($customer, 200);
-        } 
+        }
         catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
 
             return response()->json("NOTFOUND", 404);
@@ -66,19 +68,19 @@ class CustomersApiController extends Controller
             'last_name' => 'required|string|max:50',
             'phone_number' => 'required|string|max:12',
         ]);
-        
-        
+
+
         try {
             $customer = Customer::findOrFail($id);
             $customer->update($request->all());
-    
+
             return response()->json($customer, 201);
-        } 
+        }
         catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
 
             return response()->json("NOTFOUND", 404);
         }
-        
+
     }
 
     /**
@@ -86,13 +88,13 @@ class CustomersApiController extends Controller
      */
     public function destroy(string $id)
     {
-        
+
         try {
             $customer = Customer::findOrFail($id);
             $customer->delete();
-    
+
             return response()->json($customer, 201);
-        } 
+        }
         catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
 
             return response()->json("NOTFOUND", 404);
