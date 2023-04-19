@@ -37,6 +37,7 @@
                 <div class="container-fluid">
                     @include('admin.partial.alert')
                     @yield('content')
+                    @include('admin.partial.confirmation-dialog')
 
                 </div><!-- container -->
 
@@ -76,6 +77,13 @@
 
         <!-- App js -->
         <script src="{{asset('assets/js/app.js')}}"></script>
+
+        <script>
+            $(document).ready(function(){
+                @stack('ready')
+            });
+        </script>
+        @stack('script')
         
     </body>
 

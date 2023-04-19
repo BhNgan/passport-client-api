@@ -78,8 +78,17 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(int $user)
     {
-        //
+        try {
+            $data = User::findOrFail($user);
+            $data->delete();
+    
+            return redirect()->route('users.index');
+        } 
+        catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
+
+            return redirect()->route('users.index');
+        }
     }
 }

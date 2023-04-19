@@ -9,6 +9,8 @@ use Illuminate\View\View;
 use App\Models\User;
 use App\Models\Navigation;
 
+use Illuminate\Support\Facades\Auth;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -26,9 +28,13 @@ class AppServiceProvider extends ServiceProvider
     {
         Facades\View::composer('admin.pages.*', function (View $view) {
             $total_user = User::count();
+            $current_user = Auth::user();
 
             $navigations = Navigation::with('children')->where('is_root', 1)->get();
-            $view->with('navigations', $navigations);
+            $view->with([
+                'navigations' => $navigations,
+                'current_user' => $current_user
+            ]);
         });
     }
 }

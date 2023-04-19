@@ -41,7 +41,7 @@
                 <form action="{{route('users.index')}}">
                     <div class="form-group">
                         <div class="input-group">
-                            <input class="form-control" name="search" id="search" aria-describedby="searchHelp" placeholder="Nhập email tìm kiếm" value="">
+                            <input class="form-control" name="search" id="search" aria-describedby="searchHelp" placeholder="Nhập email tìm kiếm" value="{{ request()->get('search') }}">
                             <div class="input-group-append">
                                 <button type="submit" class="btn btn-gradient-success float-right">Tìm kiếm</button>
                             </div>
@@ -57,6 +57,7 @@
                             <th>ID</th>
                             <th>Tên người dùng</th>
                             <th>Email</th>
+                            <th></th>
                         </tr>
                         </thead>
                         
@@ -72,6 +73,11 @@
                                 <td>
                                     {{ $user->email }}
                                 </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger"  data-toggle="modal" onclick="confirmDelete('{{ $user->id }}', '{{ 'Bạn có muốn xóa dữ liệu người dùng ' . $user->email }}', '{{ route('users.destroy', ['user' => $user->id]) }}' )">
+                                        Xóa
+                                    </button>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -83,3 +89,22 @@
     </div>
 </div>
 @endsection
+
+@push('ready')
+    {{-- alert('yay') --}}
+@endpush
+
+@push('script')
+<script>
+    var confirmDelete = (id, label, route) => {
+        $('#confirmationModalLabel').text(label);
+        $('#confirmationModalUrl').attr('action', route);
+        $('#confirmationModalMethod').val('DELETE');
+        
+        $('#confirmationModal').modal({
+            show: true
+        });
+        
+    }
+</script>
+@endpush
