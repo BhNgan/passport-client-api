@@ -17,7 +17,7 @@ class CustomersApiController extends Controller
      */
     public function index()
     {
-        $customers = Customer::paginate();
+        $customers = Customer::paginate(25);
 
         return response()->json($customers, 200);
     }
