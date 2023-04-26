@@ -12,7 +12,7 @@ class Customer extends Model
 
     protected $primaryKey = 'code';
 
-    public $incrementing = true;
+    public $incrementing = false;
 
     protected $fillable = ['code','name', 'last_name', 'first_name', 'phone_number', 'city_code'];
 
