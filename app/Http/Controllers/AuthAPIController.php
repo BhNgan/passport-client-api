@@ -6,8 +6,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
 
@@ -44,7 +45,18 @@ class AuthAPIController extends Controller
         
         $user = Auth::User();
 
-        $token = $user->createToken("tinyCore");
+        // $token = $user->createToken("tinyCore");
+
+        $response = Http::asForm()->post('http://passport-client-api.test/oauth/token', [
+            'grant_type' => 'password',
+            'client_id' => '2',
+            'client_secret' => '2h3U9UGrBMrggOB2nkyhfPjC61ATvAy2fipfx1Ux',
+            'username' => $request->email,
+            'password' => $request->password,
+            'scope' => '',
+        ]);
+         
+        $token =  $response->json();
 
         $returnData = [
             "user"  => $user,
