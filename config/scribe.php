@@ -302,7 +302,7 @@ INTRO
          * Manually override some generated content in the spec. Dot notation is supported.
          */
         'overrides' => [
-            // 'info.version' => '2.0.0',
+           //  'info.version' => '3.0.0',
         ],
     ],
 

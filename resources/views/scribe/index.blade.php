@@ -26,8 +26,8 @@
             </style>
 
     <script>
-        var baseUrl = "http://passport-client-api.test/";
-        var useCsrf = Boolean(1);
+        var baseUrl = "https://passport-client-api.test";
+        var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
     <script src="{{ asset("/vendor/scribe/js/tryitout-4.18.0.js") }}"></script>
@@ -66,31 +66,38 @@
                     <a href="#authenticating-requests">Authenticating requests</a>
                 </li>
                             </ul>
+                    <ul id="tocify-header-auth" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="auth">
+                    <a href="#auth">Auth</a>
+                </li>
+                                    <ul id="tocify-subheader-auth" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="auth-POSTapi-register">
+                                <a href="#auth-POSTapi-register">User Register</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="auth-POSTapi-login">
+                                <a href="#auth-POSTapi-login">UserLogin</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-endpoints" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="endpoints">
                     <a href="#endpoints">Endpoints</a>
                 </li>
                                     <ul id="tocify-subheader-endpoints" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTapi-register">
-                                <a href="#endpoints-POSTapi-register">Display a listing of the resource.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-login">
-                                <a href="#endpoints-POSTapi-login">Store a newly created resource in storage.</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-customers">
-                                <a href="#endpoints-GETapi-customers">Display a listing of the resource.</a>
+                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-customers">
+                                <a href="#endpoints-GETapi-customers">GetListCustomer</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-customers">
-                                <a href="#endpoints-POSTapi-customers">Store a newly created resource in storage.</a>
+                                <a href="#endpoints-POSTapi-customers">CreateCustomer.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-customers--customer-">
-                                <a href="#endpoints-GETapi-customers--customer-">Display the specified resource.</a>
+                                <a href="#endpoints-GETapi-customers--customer-">GetCustomerById</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-PUTapi-customers--customer-">
-                                <a href="#endpoints-PUTapi-customers--customer-">Update the specified resource in storage.</a>
+                                <a href="#endpoints-PUTapi-customers--customer-">UpdateCustomer.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-customers--customer-">
-                                <a href="#endpoints-DELETEapi-customers--customer-">Remove the specified resource from storage.</a>
+                                <a href="#endpoints-DELETEapi-customers--customer-">DeleteCustomer.</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -103,7 +110,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: April 15, 2023</li>
+        <li>Last updated: April 28, 2023</li>
     </ul>
 </div>
 
@@ -119,15 +126,13 @@
 You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
-<p>To authenticate requests, include an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
-<p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
-<p>You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.</p>
+<p>This API is not authenticated.</p>
 
-        <h1 id="endpoints">Endpoints</h1>
+        <h1 id="auth">Auth</h1>
 
     
 
-                                <h2 id="endpoints-POSTapi-register">Display a listing of the resource.</h2>
+                                <h2 id="auth-POSTapi-register">User Register</h2>
 
 <p>
 </p>
@@ -144,8 +149,8 @@ You can switch the language used with the tabs at the top right (or from the nav
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"qyjxenthrqzadradnj\",
-    \"password\": \"doloremque\"
+    \"name\": \"jhaghlosxmytcsybqyks\",
+    \"password\": \"natus\"
 }"
 </code></pre></div>
 
@@ -161,8 +166,8 @@ const headers = {
 };
 
 let body = {
-    "name": "qyjxenthrqzadradnj",
-    "password": "doloremque"
+    "name": "jhaghlosxmytcsybqyks",
+    "password": "natus"
 };
 
 fetch(url, {
@@ -243,10 +248,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTapi-register"
-               value="qyjxenthrqzadradnj"
+               value="jhaghlosxmytcsybqyks"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>qyjxenthrqzadradnj</code></p>
+<p>Must not be greater than 255 characters. Example: <code>jhaghlosxmytcsybqyks</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -265,14 +270,14 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="POSTapi-register"
-               value="doloremque"
+               value="natus"
                data-component="body">
     <br>
-<p>Example: <code>doloremque</code></p>
+<p>Example: <code>natus</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-POSTapi-login">Store a newly created resource in storage.</h2>
+                    <h2 id="auth-POSTapi-login">UserLogin</h2>
 
 <p>
 </p>
@@ -285,12 +290,13 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://passport-client-api.test/api/login" \
+    "http://passport-client-api.test/api/login?lang=ullam" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"dare.garfield@example.com\",
-    \"password\": \"J4R2OazIB\\\\}I&gt;0&gt;Z\"
+    \"email\": \"sschuppe@example.org\",
+    \"password\": \"YT`S\\\\JL0U{b?JRX}\",
+    \"title\": \"dolor\"
 }"
 </code></pre></div>
 
@@ -300,14 +306,21 @@ fetch(url, {
     "http://passport-client-api.test/api/login"
 );
 
+const params = {
+    "lang": "ullam",
+};
+Object.keys(params)
+    .forEach(key =&gt; url.searchParams.append(key, params[key]));
+
 const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "email": "dare.garfield@example.com",
-    "password": "J4R2OazIB\\}I&gt;0&gt;Z"
+    "email": "sschuppe@example.org",
+    "password": "YT`S\\JL0U{b?JRX}",
+    "title": "dolor"
 };
 
 fetch(url, {
@@ -381,17 +394,29 @@ fetch(url, {
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
-                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+                            <h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+                                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>lang</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="lang"                data-endpoint="POSTapi-login"
+               value="ullam"
+               data-component="query">
+    <br>
+<p>The language. Example: <code>ullam</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-login"
-               value="dare.garfield@example.com"
+               value="sschuppe@example.org"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>dare.garfield@example.com</code></p>
+<p>Must be a valid email address. Example: <code>sschuppe@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -399,14 +424,29 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="POSTapi-login"
-               value="J4R2OazIB\}I>0>Z"
+               value="YT`S\JL0U{b?JRX}"
                data-component="body">
     <br>
-<p>Example: <code>J4R2OazIB\}I&gt;0&gt;Z</code></p>
+<p>Example: <code>YT</code>S\JL0U{b?JRX}`</p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+               name="title"                data-endpoint="POSTapi-login"
+               value="dolor"
+               data-component="body">
+    <br>
+<p>The title of the post. Example: <code>dolor</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-GETapi-customers">Display a listing of the resource.</h2>
+                <h1 id="endpoints">Endpoints</h1>
+
+    
+
+                                <h2 id="endpoints-GETapi-customers">GetListCustomer</h2>
 
 <p>
 </p>
@@ -522,7 +562,7 @@ access-control-allow-origin: *
             </div>
                         </form>
 
-                    <h2 id="endpoints-POSTapi-customers">Store a newly created resource in storage.</h2>
+                    <h2 id="endpoints-POSTapi-customers">CreateCustomer.</h2>
 
 <p>
 </p>
@@ -539,10 +579,10 @@ access-control-allow-origin: *
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"mxgirdcwwrvnyfuote\",
-    \"first_name\": \"xk\",
-    \"last_name\": \"hksbgszblqsyebxeqizrc\",
-    \"phone_number\": \"sksaq\"
+    \"name\": \"txoddbjdjautsfcfldfsivuk\",
+    \"first_name\": \"tejdijhwnyt\",
+    \"last_name\": \"bd\",
+    \"phone_number\": \"fsreayld\"
 }"
 </code></pre></div>
 
@@ -558,10 +598,10 @@ const headers = {
 };
 
 let body = {
-    "name": "mxgirdcwwrvnyfuote",
-    "first_name": "xk",
-    "last_name": "hksbgszblqsyebxeqizrc",
-    "phone_number": "sksaq"
+    "name": "txoddbjdjautsfcfldfsivuk",
+    "first_name": "tejdijhwnyt",
+    "last_name": "bd",
+    "phone_number": "fsreayld"
 };
 
 fetch(url, {
@@ -642,10 +682,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTapi-customers"
-               value="mxgirdcwwrvnyfuote"
+               value="txoddbjdjautsfcfldfsivuk"
                data-component="body">
     <br>
-<p>Must not be greater than 50 characters. Example: <code>mxgirdcwwrvnyfuote</code></p>
+<p>Must not be greater than 50 characters. Example: <code>txoddbjdjautsfcfldfsivuk</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>first_name</code></b>&nbsp;&nbsp;
@@ -653,10 +693,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="first_name"                data-endpoint="POSTapi-customers"
-               value="xk"
+               value="tejdijhwnyt"
                data-component="body">
     <br>
-<p>Must not be greater than 50 characters. Example: <code>xk</code></p>
+<p>Must not be greater than 50 characters. Example: <code>tejdijhwnyt</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
@@ -664,10 +704,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="last_name"                data-endpoint="POSTapi-customers"
-               value="hksbgszblqsyebxeqizrc"
+               value="bd"
                data-component="body">
     <br>
-<p>Must not be greater than 50 characters. Example: <code>hksbgszblqsyebxeqizrc</code></p>
+<p>Must not be greater than 50 characters. Example: <code>bd</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
@@ -675,14 +715,14 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="phone_number"                data-endpoint="POSTapi-customers"
-               value="sksaq"
+               value="fsreayld"
                data-component="body">
     <br>
-<p>Must not be greater than 12 characters. Example: <code>sksaq</code></p>
+<p>Must not be greater than 12 characters. Example: <code>fsreayld</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-GETapi-customers--customer-">Display the specified resource.</h2>
+                    <h2 id="endpoints-GETapi-customers--customer-">GetCustomerById</h2>
 
 <p>
 </p>
@@ -695,14 +735,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://passport-client-api.test/api/customers/1" \
+    --get "http://passport-client-api.test/api/customers/C01808737" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://passport-client-api.test/api/customers/1"
+    "http://passport-client-api.test/api/customers/C01808737"
 );
 
 const headers = {
@@ -803,14 +843,14 @@ access-control-allow-origin: *
  &nbsp;
                 <input type="number" style="display: none"
                name="customer"                data-endpoint="GETapi-customers--customer-"
-               value="1"
+               value="C01808737"
                data-component="url">
     <br>
-<p>The customer. Example: <code>1</code></p>
+<p>The customer. Example: <code>C01808737</code></p>
             </div>
                     </form>
 
-                    <h2 id="endpoints-PUTapi-customers--customer-">Update the specified resource in storage.</h2>
+                    <h2 id="endpoints-PUTapi-customers--customer-">UpdateCustomer.</h2>
 
 <p>
 </p>
@@ -823,21 +863,21 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://passport-client-api.test/api/customers/1" \
+    "http://passport-client-api.test/api/customers/C01808737" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"ecbeppivwb\",
-    \"first_name\": \"zfmxccvvagj\",
-    \"last_name\": \"favkzfxw\",
-    \"phone_number\": \"oz\"
+    \"name\": \"wxbhcsofscxlauurbrvxoxp\",
+    \"first_name\": \"ssvkdtwmc\",
+    \"last_name\": \"bznfvtddglcarjphevh\",
+    \"phone_number\": \"e\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://passport-client-api.test/api/customers/1"
+    "http://passport-client-api.test/api/customers/C01808737"
 );
 
 const headers = {
@@ -846,10 +886,10 @@ const headers = {
 };
 
 let body = {
-    "name": "ecbeppivwb",
-    "first_name": "zfmxccvvagj",
-    "last_name": "favkzfxw",
-    "phone_number": "oz"
+    "name": "wxbhcsofscxlauurbrvxoxp",
+    "first_name": "ssvkdtwmc",
+    "last_name": "bznfvtddglcarjphevh",
+    "phone_number": "e"
 };
 
 fetch(url, {
@@ -934,10 +974,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="customer"                data-endpoint="PUTapi-customers--customer-"
-               value="1"
+               value="C01808737"
                data-component="url">
     <br>
-<p>The customer. Example: <code>1</code></p>
+<p>The customer. Example: <code>C01808737</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -946,10 +986,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="PUTapi-customers--customer-"
-               value="ecbeppivwb"
+               value="wxbhcsofscxlauurbrvxoxp"
                data-component="body">
     <br>
-<p>Must not be greater than 50 characters. Example: <code>ecbeppivwb</code></p>
+<p>Must not be greater than 50 characters. Example: <code>wxbhcsofscxlauurbrvxoxp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>first_name</code></b>&nbsp;&nbsp;
@@ -957,10 +997,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="first_name"                data-endpoint="PUTapi-customers--customer-"
-               value="zfmxccvvagj"
+               value="ssvkdtwmc"
                data-component="body">
     <br>
-<p>Must not be greater than 50 characters. Example: <code>zfmxccvvagj</code></p>
+<p>Must not be greater than 50 characters. Example: <code>ssvkdtwmc</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
@@ -968,10 +1008,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="last_name"                data-endpoint="PUTapi-customers--customer-"
-               value="favkzfxw"
+               value="bznfvtddglcarjphevh"
                data-component="body">
     <br>
-<p>Must not be greater than 50 characters. Example: <code>favkzfxw</code></p>
+<p>Must not be greater than 50 characters. Example: <code>bznfvtddglcarjphevh</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
@@ -979,14 +1019,14 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="phone_number"                data-endpoint="PUTapi-customers--customer-"
-               value="oz"
+               value="e"
                data-component="body">
     <br>
-<p>Must not be greater than 12 characters. Example: <code>oz</code></p>
+<p>Must not be greater than 12 characters. Example: <code>e</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-DELETEapi-customers--customer-">Remove the specified resource from storage.</h2>
+                    <h2 id="endpoints-DELETEapi-customers--customer-">DeleteCustomer.</h2>
 
 <p>
 </p>
@@ -999,14 +1039,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://passport-client-api.test/api/customers/1" \
+    "http://passport-client-api.test/api/customers/C01808737" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://passport-client-api.test/api/customers/1"
+    "http://passport-client-api.test/api/customers/C01808737"
 );
 
 const headers = {
@@ -1091,10 +1131,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="customer"                data-endpoint="DELETEapi-customers--customer-"
-               value="1"
+               value="C01808737"
                data-component="url">
     <br>
-<p>The customer. Example: <code>1</code></p>
+<p>The customer. Example: <code>C01808737</code></p>
             </div>
                     </form>
 

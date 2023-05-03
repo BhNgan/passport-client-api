@@ -1,4 +1,4 @@
-name: Endpoints
+name: Auth
 description: ''
 endpoints:
   -
@@ -6,11 +6,11 @@ endpoints:
       - POST
     uri: api/register
     metadata:
-      groupName: Endpoints
+      groupName: Auth
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Display a listing of the resource.'
+      title: 'User Register'
       description: ''
       authenticated: false
       custom: []
@@ -26,7 +26,7 @@ endpoints:
         name: name
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: qyjxenthrqzadradnj
+        example: jhaghlosxmytcsybqyks
         type: string
         custom: []
       email:
@@ -40,12 +40,12 @@ endpoints:
         name: password
         description: ''
         required: true
-        example: doloremque
+        example: natus
         type: string
         custom: []
     cleanBodyParameters:
-      name: qyjxenthrqzadradnj
-      password: doloremque
+      name: jhaghlosxmytcsybqyks
+      password: natus
     fileParameters: []
     responses: []
     responseFields: []
@@ -59,11 +59,11 @@ endpoints:
       - POST
     uri: api/login
     metadata:
-      groupName: Endpoints
+      groupName: Auth
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Store a newly created resource in storage.'
+      title: UserLogin
       description: ''
       authenticated: false
       custom: []
@@ -72,283 +72,42 @@ endpoints:
       Accept: application/json
     urlParameters: []
     cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
+    queryParameters:
+      lang:
+        name: lang
+        description: 'The language.'
+        required: true
+        example: ullam
+        type: string
+        custom: []
+    cleanQueryParameters:
+      lang: ullam
     bodyParameters:
       email:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: dare.garfield@example.com
+        example: sschuppe@example.org
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: 'J4R2OazIB\}I>0>Z'
+        example: 'YT`S\JL0U{b?JRX}'
+        type: string
+        custom: []
+      title:
+        name: title
+        description: 'The title of the post.'
+        required: false
+        example: dolor
         type: string
         custom: []
     cleanBodyParameters:
-      email: dare.garfield@example.com
-      password: 'J4R2OazIB\}I>0>Z'
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: api/customers
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Display a listing of the resource.'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 401
-        content: '{"message":"Unauthenticated."}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/customers
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Store a newly created resource in storage.'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      name:
-        name: name
-        description: 'Must not be greater than 50 characters.'
-        required: true
-        example: mxgirdcwwrvnyfuote
-        type: string
-        custom: []
-      first_name:
-        name: first_name
-        description: 'Must not be greater than 50 characters.'
-        required: true
-        example: xk
-        type: string
-        custom: []
-      last_name:
-        name: last_name
-        description: 'Must not be greater than 50 characters.'
-        required: true
-        example: hksbgszblqsyebxeqizrc
-        type: string
-        custom: []
-      phone_number:
-        name: phone_number
-        description: 'Must not be greater than 12 characters.'
-        required: true
-        example: sksaq
-        type: string
-        custom: []
-    cleanBodyParameters:
-      name: mxgirdcwwrvnyfuote
-      first_name: xk
-      last_name: hksbgszblqsyebxeqizrc
-      phone_number: sksaq
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/customers/{customer}'
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Display the specified resource.'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      customer:
-        name: customer
-        description: 'The customer.'
-        required: true
-        example: 1
-        type: integer
-        custom: []
-    cleanUrlParameters:
-      customer: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 401
-        content: '{"message":"Unauthenticated."}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - PUT
-      - PATCH
-    uri: 'api/customers/{customer}'
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Update the specified resource in storage.'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      customer:
-        name: customer
-        description: 'The customer.'
-        required: true
-        example: 1
-        type: integer
-        custom: []
-    cleanUrlParameters:
-      customer: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      name:
-        name: name
-        description: 'Must not be greater than 50 characters.'
-        required: true
-        example: ecbeppivwb
-        type: string
-        custom: []
-      first_name:
-        name: first_name
-        description: 'Must not be greater than 50 characters.'
-        required: true
-        example: zfmxccvvagj
-        type: string
-        custom: []
-      last_name:
-        name: last_name
-        description: 'Must not be greater than 50 characters.'
-        required: true
-        example: favkzfxw
-        type: string
-        custom: []
-      phone_number:
-        name: phone_number
-        description: 'Must not be greater than 12 characters.'
-        required: true
-        example: oz
-        type: string
-        custom: []
-    cleanBodyParameters:
-      name: ecbeppivwb
-      first_name: zfmxccvvagj
-      last_name: favkzfxw
-      phone_number: oz
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/customers/{customer}'
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Remove the specified resource from storage.'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      customer:
-        name: customer
-        description: 'The customer.'
-        required: true
-        example: 1
-        type: integer
-        custom: []
-    cleanUrlParameters:
-      customer: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+      email: sschuppe@example.org
+      password: 'YT`S\JL0U{b?JRX}'
+      title: dolor
     fileParameters: []
     responses: []
     responseFields: []

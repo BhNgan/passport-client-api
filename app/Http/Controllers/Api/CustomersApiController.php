@@ -13,7 +13,7 @@ use  App\Http\Controllers\Controller;
 class CustomersApiController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * GetListCustomer
      */
     public function index()
     {
@@ -23,7 +23,7 @@ class CustomersApiController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * CreateCustomer.
      */
     public function store(Request $request)
     {
@@ -41,7 +41,7 @@ class CustomersApiController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * GetCustomerById
      */
     public function show(string $id)
     {
@@ -57,7 +57,7 @@ class CustomersApiController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * UpdateCustomer.
      */
     public function update(Request $request, string $id)
     {
@@ -84,7 +84,7 @@ class CustomersApiController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * DeleteCustomer.
      */
     public function destroy(string $id)
     {

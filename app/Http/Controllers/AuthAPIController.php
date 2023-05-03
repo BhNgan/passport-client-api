@@ -11,10 +11,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
 
+/**
+ * @group Auth
+ *
+*/
 class AuthAPIController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * User Register
      */
     public function register(Request $request)
     {
@@ -36,12 +40,12 @@ class AuthAPIController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * UserLogin
      */
     public function login(LoginRequest $request)
     {
         $request->authenticate();
-        
+
         $user = Auth::User();
 
         $token = $user->createToken("tinyCore");
@@ -55,7 +59,7 @@ class AuthAPIController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * GetUserById.
      */
     public function show(string $id)
     {
@@ -63,7 +67,7 @@ class AuthAPIController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     *
      */
     public function update(Request $request, string $id)
     {
@@ -71,7 +75,7 @@ class AuthAPIController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     *
      */
     public function destroy(string $id)
     {
